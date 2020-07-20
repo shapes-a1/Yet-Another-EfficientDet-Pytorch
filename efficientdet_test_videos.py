@@ -119,15 +119,15 @@ while True:
 
     if cnt == 0:
         # Video writer
-        out = cv2.VideoWriter('{}_d{}.mp4'.format(video_src.split('.')[0], compound_coef), 0x7634706d, fps,
+        writer = cv2.VideoWriter('{}_d{}.mp4'.format(video_src.split('.')[0], compound_coef), 0x7634706d, fps,
                               (output_size[1], output_size[0]))
 
     # write frame
-    out.write(img_show)
+    writer.write(img_show)
 
     cnt += 1
 
 cap.release()
-out.release()
+writer.release()
 
 
