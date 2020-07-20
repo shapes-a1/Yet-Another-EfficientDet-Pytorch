@@ -66,14 +66,15 @@ def display(preds, imgs):
             return imgs[i]
 
         for j in range(len(preds[i]['rois'])):
-            (x1, y1, x2, y2) = preds[i]['rois'][j].astype(np.int)
-            cv2.rectangle(imgs[i], (x1, y1), (x2, y2), (255, 255, 0), 2)
-            obj = obj_list[preds[i]['class_ids'][j]]
-            score = float(preds[i]['scores'][j])
+            if preds[i]['class_ids'][j] == 0:
+                (x1, y1, x2, y2) = preds[i]['rois'][j].astype(np.int)
+                cv2.rectangle(imgs[i], (x1, y1), (x2, y2), (255, 255, 0), 2)
+                obj = obj_list[preds[i]['class_ids'][j]]
+                score = float(preds[i]['scores'][j])
 
-            cv2.putText(imgs[i], '{}, {:.3f}'.format(obj, score),
-                        (x1, y1 + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
-                        (255, 255, 0), 1)
+                # cv2.putText(imgs[i], '{}, {:.3f}'.format(obj, score),
+                #             (x1, y1 + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                #             (255, 255, 0), 1)
 
         return imgs[i]
 
