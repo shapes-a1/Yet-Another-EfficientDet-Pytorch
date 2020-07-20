@@ -11,7 +11,7 @@ import numpy as np
 from torch.backends import cudnn
 from backbone import EfficientDetBackbone
 from efficientdet.utils import BBoxTransform, ClipBoxes
-from utils.utils import invert_affine, postprocess, preprocess_video
+from efficientdet.utils import invert_affine, postprocess, preprocess_video
 
 parser = argparse.ArgumentParser(description='EfficientDet')
 parser.add_argument('--input', type=str, help='input video')
